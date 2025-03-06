@@ -7,11 +7,10 @@
 
 import * as THREE from 'three';
 import React from 'react';
-import { Text, useGLTF } from '@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import OverLay from './OverLay';
 import { useSwampStore } from '../core/store';
-import { degToRad } from 'three/src/math/MathUtils.js';
 import BtnOverLay from './BtnOverLay';
 
 type GLTFResult = GLTF & {

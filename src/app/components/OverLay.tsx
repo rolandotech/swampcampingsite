@@ -3,8 +3,9 @@
 
 import { Html } from '@react-three/drei';
 import React from 'react';
+import { OverlayProps } from '../interface';
 
-export default function OverLay(props: any) {
+export default function OverLay(props: OverlayProps) {
 	return (
 		<Html
 			transform

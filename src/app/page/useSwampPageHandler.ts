@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { useSwampStore } from '../core/store';
@@ -13,14 +13,7 @@ export default function useSwampPageHandler() {
     const campRef = useRef<THREE.Mesh | null>(null);
     const { page, setPage } = useSwampStore();
 
-    useEffect(() => {
-        fitCamera();
-        window.addEventListener('resize', fitCamera);
-        return () => window.removeEventListener('resize', fitCamera);
-    }, [page]);
-
-
-    const fitCamera = async () => {
+    const fitCamera = useCallback(() => {
         if (page === 'intro') {
             if (
                 meshFitCameraStore.current &&
@@ -45,7 +38,7 @@ export default function useSwampPageHandler() {
                 campRef.current.rotation.y = degToRad(20);
             }
         }
-    };
+    },[]);
 
     const backBtnHandler = () => {
         if (
@@ -62,6 +55,12 @@ export default function useSwampPageHandler() {
         }
         
     }
+
+    useEffect(() => {
+        fitCamera();
+        window.addEventListener('resize', fitCamera);
+        return () => window.removeEventListener('resize', fitCamera);
+    }, [page, fitCamera]);
 
   return {
     data: {
