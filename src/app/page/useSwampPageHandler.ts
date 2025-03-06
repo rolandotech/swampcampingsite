@@ -38,7 +38,7 @@ export default function useSwampPageHandler() {
                 campRef.current.rotation.y = degToRad(20);
             }
         }
-    },[]);
+    },[meshFitCameraStore, camControls, campRef, textRef, page]);
 
     const backBtnHandler = () => {
         if (

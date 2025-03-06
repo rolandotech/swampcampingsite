@@ -6,12 +6,13 @@
  */
 
 import * as THREE from 'three';
-import React from 'react';
+import React, { JSX } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { GLTF } from 'three-stdlib';
 import OverLay from './OverLay';
 import { useSwampStore } from '../core/store';
 import BtnOverLay from './BtnOverLay';
+type GLTFAction = THREE.AnimationAction;
 
 type GLTFResult = GLTF & {
 	nodes: {
